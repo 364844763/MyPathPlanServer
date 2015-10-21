@@ -10,8 +10,8 @@ import java.util.List;
 public class PathFinding {
     private String start;
     private String ends;
-    private HashMap<String,Path> roads;
-    private HashMap<String,Node> maps=new HashMap<String, Node>();
+    private HashMap<String, Path> roads;
+    private HashMap<String, Node> maps=new HashMap<String, Node>();
     private ArrayList<Node> nodes;
     private Node startNode;
     private Node endNode;
@@ -45,8 +45,8 @@ public class PathFinding {
         Node currentPoint=startNode;
         openList.add(currentPoint);
 
-        while (openList != null) {
-          // System.out.println("1111111111111");
+        while (!openList.isEmpty()) {
+            // System.out.println("1111111111111");
             if (currentPoint.getNodeId().equals(ends)) break;
             else {
                 openList.remove(currentPoint);
@@ -54,35 +54,35 @@ public class PathFinding {
                 //System.out.println(currentPoint.getNodeId());
                 ArrayList<String> consecutivePoints = currentPoint.getRoads();
                 if (consecutivePoints!=null)
-                for (String i : consecutivePoints) {
-                    Path path=roads.get(i);
-                    Node temp;
+                    for (String i : consecutivePoints) {
+                        Path path=roads.get(i);
+                        Node temp;
 
-                    if (currentPoint.getNodeId().equals(path.getEnd())){
-                        temp = maps.get(path.getStart());
-                    }else {
-                        temp = maps.get(path.getEnd());
-                    }
+                        if (currentPoint.getNodeId().equals(path.getEnd())){
+                            temp = maps.get(path.getStart());
+                        }else {
+                            temp = maps.get(path.getEnd());
+                        }
 
-                    if (!closeList.contains(temp) && !openList.contains(temp)) {
-                        temp.setParent(currentPoint.getNodeId());
-                        temp.hx = temp.getDistance();
-                        temp.setGx(maps.get(temp.getParent()).gx+path.getLength());
-                        temp.fx = temp.hx + temp.gx;
-                        openList.add(temp);
-                    }
-                    else if (openList.contains(temp)){
-                        //System.out.println(11111);
-                        if (maps.get(temp.getParent()).gx>currentPoint.gx){
-                            //System.out.println(222);
+                        if (!closeList.contains(temp) && !openList.contains(temp)) {
                             temp.setParent(currentPoint.getNodeId());
                             temp.hx = temp.getDistance();
                             temp.setGx(maps.get(temp.getParent()).gx+path.getLength());
                             temp.fx = temp.hx + temp.gx;
+                            openList.add(temp);
                         }
-                    }
+                        else if (openList.contains(temp)){
+                            //System.out.println(11111);
+                            if (maps.get(temp.getParent()).gx>currentPoint.gx){
+                                //System.out.println(222);
+                                temp.setParent(currentPoint.getNodeId());
+                                temp.hx = temp.getDistance();
+                                temp.setGx(maps.get(temp.getParent()).gx+path.getLength());
+                                temp.fx = temp.hx + temp.gx;
+                            }
+                        }
 
-                }
+                    }
                 if (openList.size()==0){
                     System.out.println("wulu");
                     break;
@@ -100,15 +100,28 @@ public class PathFinding {
                 currentPoint = minFxPoint;
             }
         }
-        paths.add(currentPoint.getNodeId());
-        paths.add(currentPoint.getParent());
-//        System.out.println(1111111111);
+//        paths.add(currentPoint.getNodeId());
+        for (String str:maps.get(currentPoint.getParent()).getRoads()){
+            if (roads.get(str).getEnd().equals(currentPoint.getNodeId())||roads.get(str).getStart().equals(currentPoint.getNodeId())){
+                paths.add(str);
+                System.out.println(roads.get(str));
+            }
+        }
+//        paths.add(currentPoint.getParent());
+        //System.out.println(1111111111);
 //        System.out.println(currentPoint.getNodeId());
+//        System.out.println(currentPoint.getParent());
         while (!currentPoint.getParent() .equals(start)) {
-            System.out.println(currentPoint.getParent());
-            currentPoint = maps.get(currentPoint.getParent());
-            paths.add(currentPoint.getParent());
 
+            currentPoint = maps.get(currentPoint.getParent());
+            for (String str:maps.get(currentPoint.getParent()).getRoads()){
+                if (roads.get(str).getEnd().equals(currentPoint.getNodeId())||roads.get(str).getStart().equals(currentPoint.getNodeId())){
+                    paths.add(str);
+                    System.out.println(roads.get(str));
+                }
+            }
+//            paths.add(currentPoint.getParent());
+//            System.out.println(currentPoint.getParent());
         }
         return  paths;
     }
