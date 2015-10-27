@@ -2,7 +2,7 @@
  * Created by jiajie on 15/10/20.
  */
 import com.alibaba.fastjson.JSON;
-import pathplan.Path;
+import bean.Path;
 import pathplan.PathFinding;
 import pathplan.RoadRead;
 
@@ -27,7 +27,7 @@ public class HelloWorld extends HttpServlet {
         super.init();
         roadRead=new RoadRead();
         try {
-            roadRead.readNodes("/Users/jiajie/Downloads/path.csv");
+            roadRead.readNodes("D:\\path.csv");
             paths=roadRead.getPaths();
         } catch (IOException e) {
             e.printStackTrace();
