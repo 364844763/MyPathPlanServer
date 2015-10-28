@@ -1,4 +1,4 @@
-package pathplan;
+package pathmatch;
 
 import bean.Location;
 import bean.Road;
