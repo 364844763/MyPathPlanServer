@@ -14,8 +14,8 @@ import java.util.Map;
  * Created by Administrator on 2015/8/22.
  */
 public class RoadMatcher {
-    public static String match(Location point,HashMap<String, Road> map){
-        String result="";
+    public static  ArrayList<String> match(Location point,HashMap<String, Road> map){
+        ArrayList<String> results = new ArrayList<>();
         Location point2=new Location(point.latitude,point.longitude);
         Location xyP3=new  GPSzhuanXY(point).zhuanhuan();
         Location xyP33=new  GPSzhuanXY(point2).zhuanhuan();
@@ -48,7 +48,7 @@ public class RoadMatcher {
                 double ok2 = nearestPoint2.calculateDistance();
 //                System.out.println(ok2);
                 if (ok2<15&&ok<15){
-                    result=result+key+"\n";
+                    results.add(key);
                     break;
                 }
             }
@@ -56,6 +56,6 @@ public class RoadMatcher {
             }
 
 
-        return result;
+        return results;
     }
 }

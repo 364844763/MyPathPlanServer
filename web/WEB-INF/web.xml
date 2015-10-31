@@ -12,4 +12,13 @@
         <servlet-name>HelloWorld</servlet-name>
         <url-pattern>/HelloWorld</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>PathFindServer</servlet-name>
+        <servlet-class> PathFindServer</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name> PathFindServer</servlet-name>
+        <url-pattern>/PathFindServer</url-pattern>
+    </servlet-mapping>
 </web-app>
