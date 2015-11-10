@@ -1,6 +1,8 @@
 package util;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -37,5 +39,16 @@ public class TextUtils {
         }
         return sb.toString().toLowerCase();
     }
+
+    public static Set<String> string2set(String key){
+        Set<String> keySet=new HashSet<>();
+        char[] temps=key.toCharArray();
+        for (char c:temps){
+            keySet.add(c+"");
+        }
+
+        return keySet;
+    }
+
 
 }
