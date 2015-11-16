@@ -8,6 +8,15 @@ public class Buliding {
     private double latitude;
     private double longitude;
 
+    @Override
+    public String toString() {
+        return "Buliding{" +
+                "name='" + name + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
+    }
+
     public String getName() {
         return name;
     }

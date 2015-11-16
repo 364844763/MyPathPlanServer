@@ -1,9 +1,9 @@
 package pathmatch;
 
 import bean.Buliding;
+import util.TextUtils;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -16,9 +16,21 @@ public class BulidReader {
     public static Map<Set, Buliding>read(String fileName){
         Map<Set,Buliding> map=new HashMap<>();
         try {
-            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            File f = new File(fileName);
+            InputStreamReader read = new InputStreamReader(new FileInputStream(f),"UTF-8");
+            BufferedReader br = new BufferedReader(read);
             String line = br.readLine();
-
+            while (line!=null){
+                String[] temp=line.split(";");
+                System.out.println(line);
+                Set<String> keySet= TextUtils.string2set(temp[0]);
+                Buliding buliding=new Buliding();
+                buliding.setName(temp[0]);
+                buliding.setLatitude(Double.parseDouble(temp[1]));
+                buliding.setLatitude(Double.parseDouble(temp[2]));
+                map.put(keySet, buliding);
+                line = br.readLine();
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
