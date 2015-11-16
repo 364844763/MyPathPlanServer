@@ -13,7 +13,7 @@ import java.util.Set;
  * Created by jiajie on 15/11/10.
  */
 public class BulidReader {
-    public static Map<Set, Buliding>read(String fileName){
+    public static Map<Set, Buliding> read(String fileName){
         Map<Set,Buliding> map=new HashMap<>();
         try {
             File f = new File(fileName);
@@ -21,8 +21,8 @@ public class BulidReader {
             BufferedReader br = new BufferedReader(read);
             String line = br.readLine();
             while (line!=null){
-                String[] temp=line.split(";");
-                System.out.println(line);
+                String[] temp=line.split(",");
+                //System.out.println(line);
                 Set<String> keySet= TextUtils.string2set(temp[0]);
                 Buliding buliding=new Buliding();
                 buliding.setName(temp[0]);
@@ -34,6 +34,6 @@ public class BulidReader {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+        return map;
     }
 }

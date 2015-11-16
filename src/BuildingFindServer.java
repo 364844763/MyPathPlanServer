@@ -23,12 +23,12 @@ public class BuildingFindServer extends HttpServlet {
     {
         // 执行必需的初始化
         super.init();
-        bulidings= BulidReader.read("/Users/jiajie/Desktop/test.csv");
+        bulidings= BulidReader.read("D:\\test.csv");
 
     }@Override
      protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/json; charset=UTF-8");
-        String name=request.getParameter("name");
+        String name=new String(request.getParameter("name").getBytes("ISO-8859-1"), "utf-8");
         if (name!=null){
             Buildmatch buildmatch=new Buildmatch(bulidings);
             List<Buliding> result=buildmatch.fuzzyMatch(name);

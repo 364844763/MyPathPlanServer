@@ -12,7 +12,7 @@ import java.util.Set;
 public class Test {
     public static void main(String[] args){
         Map<Set, Buliding> bulidings;
-        bulidings= BulidReader.read("/Users/jiajie/Desktop/test.csv");
+        bulidings= BulidReader.read("D:\\test.csv");
         String name="公园";
         Buildmatch buildmatch=new Buildmatch(bulidings);
         List<Buliding> result=buildmatch.fuzzyMatch(name);
