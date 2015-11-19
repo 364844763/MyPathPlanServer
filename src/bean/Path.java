@@ -8,6 +8,15 @@ public class Path {
     private double length;
     private String Start;
     private String end;
+    private int nextDirection;//0-直行，1-左行，2-右行
+
+    public int getNextDirection() {
+        return nextDirection;
+    }
+
+    public void setNextDirection(int nextDirection) {
+        this.nextDirection = nextDirection;
+    }
 
     public String getEnd() {
         return end;
@@ -47,6 +56,7 @@ public class Path {
                 ", length=" + length +
                 ", Start='" + Start + '\'' +
                 ", end='" + end + '\'' +
+                ", nextDirection=" + nextDirection +
                 '}';
     }
 }

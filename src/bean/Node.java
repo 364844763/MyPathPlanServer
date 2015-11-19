@@ -13,6 +13,16 @@ public class Node {
     public double gx;
     public double hx;
     private String parent;
+    private Location location;
+    private double longitude;
+    private double latitude;
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
     public String getParent() {
         return parent;
@@ -46,8 +56,7 @@ public class Node {
         this.latitude = latitude;
     }
 
-    private double longitude;
-    private double latitude;
+
     public ArrayList<String> getRoads() {
         return roads;
     }

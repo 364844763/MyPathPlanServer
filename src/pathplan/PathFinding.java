@@ -2,6 +2,7 @@ package pathplan;
 
 import bean.Node;
 import bean.Path;
+import pathmatch.GPSzhuanXY;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,8 +23,8 @@ public class PathFinding {
         this.roads = roads;
     }
 
-    public List<String> pathFinder(){
-        List<String> paths=new ArrayList<String>();
+    public List<Path> pathFinder(){
+        List<Path> paths=new ArrayList<>();
         for (Node node:nodes){
             if (node.getNodeId().equals(start)){
                 startNode=node;
@@ -103,8 +104,25 @@ public class PathFinding {
 //        paths.add(currentPoint.getNodeId());
         for (String str:maps.get(currentPoint.getParent()).getRoads()){
             if (roads.get(str).getEnd().equals(currentPoint.getNodeId())||roads.get(str).getStart().equals(currentPoint.getNodeId())){
-                paths.add(str);
-                System.out.println(roads.get(str));
+//                Path path=roads.get(str);
+//                paths.add(path);
+//                System.out.println(roads.get(str));
+                Node intersection = maps.get(currentPoint.getParent());
+                if (intersection.getParent() != null) {
+                    Node start = maps.get(maps.get(currentPoint.getParent()).getParent());
+                    DrectionDeterminer determiner = new DrectionDeterminer(new GPSzhuanXY(start.getLocation()).zhuanhuan()
+                            , new GPSzhuanXY(intersection.getLocation()).zhuanhuan()
+                            , new GPSzhuanXY(currentPoint.getLocation()).zhuanhuan());
+                    Path temp = roads.get(str);
+                    temp.setNextDirection(determiner.determineDrection());
+                    paths.add(temp);
+                    System.out.println(temp);
+                }else {
+                    Path temp = roads.get(str);
+                    temp.setNextDirection(-1);
+                    paths.add(temp);
+                    System.out.println(temp);
+                }
             }
         }
 //        paths.add(currentPoint.getParent());
@@ -116,8 +134,26 @@ public class PathFinding {
             currentPoint = maps.get(currentPoint.getParent());
             for (String str:maps.get(currentPoint.getParent()).getRoads()){
                 if (roads.get(str).getEnd().equals(currentPoint.getNodeId())||roads.get(str).getStart().equals(currentPoint.getNodeId())){
-                    paths.add(str);
-                    System.out.println(roads.get(str));
+//                    Path path=roads.get(str);
+//                    paths.add(path);
+//                    System.out.println(path);
+                    Node intersection = maps.get(currentPoint.getParent());
+                    if (intersection.getParent() != null) {
+                        Node start = maps.get(maps.get(currentPoint.getParent()).getParent());
+                        DrectionDeterminer determiner = new DrectionDeterminer(new GPSzhuanXY(start.getLocation()).zhuanhuan()
+                                , new GPSzhuanXY(intersection.getLocation()).zhuanhuan()
+                                , new GPSzhuanXY(currentPoint.getLocation()).zhuanhuan());
+                        Path temp = roads.get(str);
+                        temp.setNextDirection(determiner.determineDrection());
+                        paths.add(temp);
+                        System.out.println(temp);
+                    }else {
+                        Path temp = roads.get(str);
+                        temp.setNextDirection(-1);
+                        paths.add(temp);
+                        System.out.println(temp);
+                    }
+
                 }
             }
 //            paths.add(currentPoint.getParent());
@@ -145,5 +181,14 @@ public class PathFinding {
                 * Math.cos(lat2) * sb2 * sb2));
         return d;
     }
-
+    private List<Path> getData(List<String> result)
+    {
+        List<Path> data = new ArrayList<>();
+        for (String str:result){
+            if (roads.containsKey(str)){
+                Path path=roads.get(str);
+                data.add(path);}
+        }
+        return data;
+    }
 }

@@ -1,5 +1,6 @@
 package pathplan;
 
+import bean.Location;
 import bean.Node;
 import bean.Path;
 
@@ -14,7 +15,6 @@ public class RoadRead {
    private Node startNode;
    private Node endNode;
    private boolean isNewStartNode;
-
     public ArrayList<Node> getNodes() {
         return nodes;
     }
@@ -54,8 +54,11 @@ public class RoadRead {
                 startNode=new Node();
                 endNode=new Node();
                // System.out.println(temp[43]);
+                //location=new Location(Double.valueOf(temp[43]),Double.valueOf(temp[44]))
                 startNode.setNodeId(temp[10]);
+                startNode.setLocation(new Location(Double.valueOf(temp[43]), Double.valueOf(temp[44])));
                 endNode.setNodeId(temp[11]);
+                endNode.setLocation(new Location(Double.valueOf(temp[45]),Double.valueOf(temp[46])));
                 startNode.setLatitude(Double.valueOf(temp[44]));
                 startNode.setLongitude(Double.valueOf(temp[43]));
                 endNode.setLatitude(Double.valueOf(temp[46]));

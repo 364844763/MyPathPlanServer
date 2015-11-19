@@ -37,7 +37,7 @@ public class HelloWorld extends HttpServlet {
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException
     {
-        List<String> results =null;
+        List<Path> results =null;
         response.setContentType("text/json; charset=UTF-8");
         String start=request.getParameter("start");
         String end=request.getParameter("end");
@@ -45,8 +45,8 @@ public class HelloWorld extends HttpServlet {
              return;
         PathFinding pathFinding=new PathFinding(start,end,roadRead.getNodes(),(HashMap)paths);
         results=pathFinding.pathFinder();
-        List<Path> data=getData(results);
-        response.getOutputStream().write(JSON.toJSONString(data).getBytes("UTF-8"));
+        //List<Path> data=getData(results);
+        response.getOutputStream().write(JSON.toJSONString(results).getBytes("UTF-8"));
     }
 
     @Override

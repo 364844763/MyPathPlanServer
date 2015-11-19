@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by ¼Ö½Ü on 2015/10/28.
+ * Created by ï¿½Ö½ï¿½ on 2015/10/28.
  */
 public class PathFindServer  extends HttpServlet {
     HashMap<String, Road> map;
@@ -30,8 +30,8 @@ public class PathFindServer  extends HttpServlet {
         super.init();
         roadRead=new RoadRead();
         try {
-            map= Mapreader.reader("D:\\zhedian_output.csv");
-            roadRead.readNodes("D:\\path.csv");
+            map= Mapreader.reader("/Users/jiajie/Downloads/zhedian_output.csv");
+            roadRead.readNodes("/Users/jiajie/Downloads/path.csv");
             paths=roadRead.getPaths();
         } catch (IOException e) {
             e.printStackTrace();
@@ -42,15 +42,15 @@ public class PathFindServer  extends HttpServlet {
                          HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType("text/json; charset=UTF-8");
-        List<String> results =null;
+        List<Path> results =null;
         Location start=new Location(Double.parseDouble(request.getParameter("start_x")),Double.parseDouble(request.getParameter("start_y")));
          Location end=new Location(Double.parseDouble(request.getParameter("end_x")),Double.parseDouble(request.getParameter("end_y")));
         String sno=location2No(start);
         String eno=location2No(end);
         PathFinding pathFinding=new PathFinding(sno,eno,roadRead.getNodes(),(HashMap)paths);
         results=pathFinding.pathFinder();
-        List<Path> data=getData(results);
-        response.getOutputStream().write(JSON.toJSONString(data).getBytes("UTF-8"));
+        //List<Path> data=getData(results);
+        response.getOutputStream().write(JSON.toJSONString(results).getBytes("UTF-8"));
 
     }
     private String location2No(Location start){
