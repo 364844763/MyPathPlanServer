@@ -22,11 +22,13 @@ public class Buildmatch {
         while (iterator.hasNext()){
             Map.Entry entry = (Map.Entry) iterator.next();
             Set<String> keySet= (Set<String>) entry.getKey();
+            Set<String> newKeySet=new HashSet<>();
+            newKeySet.addAll(keySet);
           //  System.out.println();
-            int i=keySet.size();
+            int i=newKeySet.size();
            // System.out.println(i);
-            keySet.addAll(TextUtils.string2set(key));
-            if (i==keySet.size()){
+            newKeySet.addAll(TextUtils.string2set(key));
+            if (i==newKeySet.size()){
                 fuzzyBulidings.add((Buliding) entry.getValue());
             }
         }

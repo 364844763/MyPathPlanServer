@@ -26,7 +26,7 @@ public class BulidReader {
                 Set<String> keySet= TextUtils.string2set(temp[0]);
                 Buliding buliding=new Buliding();
                 buliding.setName(temp[0]);
-                buliding.setLatitude(Double.parseDouble(temp[1]));
+                buliding.setLongitude(Double.parseDouble(temp[1]));
                 buliding.setLatitude(Double.parseDouble(temp[2]));
                 map.put(keySet, buliding);
                 line = br.readLine();
