@@ -21,4 +21,13 @@
         <servlet-name> PathFindServer</servlet-name>
         <url-pattern>/PathFindServer</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>BuildingFindServer</servlet-name>
+        <servlet-class> BuildingFindServer</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name> BuildingFindServer</servlet-name>
+        <url-pattern>/BuildingFindServer</url-pattern>
+    </servlet-mapping>
 </web-app>
