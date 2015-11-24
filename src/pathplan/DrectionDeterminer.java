@@ -32,7 +32,7 @@ public class DrectionDeterminer {
      * @return 斜率
      */
     private double gradient(Location p1, Location p2) {
-        return p1.latitude - p2.latitude / p1.longitude - p2.longitude;
+        return (p1.longitude - p2.longitude) / (p1.latitude - p2.latitude);
     }
 
     public int determineDrection() {

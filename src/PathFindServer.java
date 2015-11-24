@@ -55,7 +55,7 @@ public class PathFindServer  extends HttpServlet {
     }
     private String location2No(Location start){
         ArrayList<String> startRoads=RoadMatcher.match(start, map);
-        double min=100;
+        double min=10000000;
         String sno="";
         double i=0;
         for (String string:startRoads){

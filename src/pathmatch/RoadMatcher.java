@@ -47,7 +47,9 @@ public class RoadMatcher {
                 double ok = nearestPoint.calculateDistance();
                 double ok2 = nearestPoint2.calculateDistance();
 //                System.out.println(ok2);
-                if (ok2<150&&ok<150){
+
+
+                if (ok2<1500&&ok<1500){
                     results.add(key);
                     break;
                 }
