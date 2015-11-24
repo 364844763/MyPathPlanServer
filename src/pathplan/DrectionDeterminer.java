@@ -39,7 +39,7 @@ public class DrectionDeterminer {
         int drection = 0;
         double k1 = gradient(start, intersection);
         double k2 = gradient(intersection, end);
-        double angle = (k2 - k1) / (1 + k1 * k2);
+        double angle = 10000*(k2 - k1) / (1 + k1 * k2);
         if (angle < -0.1) {
             drection = 1;
         } else if (angle > 0.1) {
