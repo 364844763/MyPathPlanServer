@@ -86,8 +86,7 @@ public class PathFinding {
                     }
                 if (openList.size()==0){
                     System.out.println("wulu");
-                    break;
-
+                    return null;
                 }
                 Node minFxPoint = openList.get(0);
                 int i = 0;
