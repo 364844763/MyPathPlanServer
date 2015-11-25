@@ -53,7 +53,11 @@ public class PathFindServer  extends HttpServlet {
             pathFinding=new PathFinding(eno,sno,roadRead.getNodes(),(HashMap)paths);
             results=pathFinding.pathFinder();
         }
+        if(results==null){
+            response.getOutputStream().write(JSON.toJSONString("").getBytes("UTF-8"));
+        }
         //List<Path> data=getData(results);
+
         response.getOutputStream().write(JSON.toJSONString(results).getBytes("UTF-8"));
 
     }
