@@ -26,6 +26,7 @@ public class PathFinding {
     public List<Path> pathFinder(){
         List<Path> paths=new ArrayList<>();
         for (Node node:nodes){
+//            System.out.println(node.getNodeId());
             if (node.getNodeId().equals(start)){
                 startNode=node;
             }

@@ -9,9 +9,28 @@ public class Path {
     private String Start;
     private String end;
     private int nextDirection;//0-直行，1-左行，2-右行
-
+    private int level;
+    private int[] flow;
     public int getNextDirection() {
         return nextDirection;
+    }
+
+    public int[] getFlow() {
+        return flow;
+    }
+    public int getFlow(int i){
+        return flow[i];
+    }
+    public void setFlow(int[] flow) {
+        this.flow = flow;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public void setNextDirection(int nextDirection) {
@@ -58,5 +77,12 @@ public class Path {
                 ", end='" + end + '\'' +
                 ", nextDirection=" + nextDirection +
                 '}';
+    }
+    public void setFlow(String[] strings){
+        flow = new int[61];
+        flow[0] = 1;
+        for(int i=0;i<strings.length;i++){
+            flow[i+1] = Integer.parseInt(strings[i]);
+        }
     }
 }
