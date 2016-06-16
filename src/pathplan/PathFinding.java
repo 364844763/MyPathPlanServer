@@ -21,10 +21,6 @@ public class PathFinding {
         this.start = start;
         this.ends = ends;
         this.roads = roads;
-    }
-
-    public List<Path> pathFinder(){
-        List<Path> paths=new ArrayList<>();
         for (Node node:nodes){
 //            System.out.println(node.getNodeId());
             if (node.getNodeId().equals(start)){
@@ -35,6 +31,11 @@ public class PathFinding {
             }
             maps.put(node.getNodeId(),node);
         }
+    }
+
+    public List<Path> pathFinder(){
+        List<Path> paths=new ArrayList<>();
+
         for (Node node:nodes){
             double distance=Distance(node.getLatitude(),node.getLongitude(),startNode.getLatitude(),startNode.getLongitude());
             node.setDistance(distance);

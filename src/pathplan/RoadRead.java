@@ -75,8 +75,10 @@ public class RoadRead {
                 }
                 if (Integer.parseInt(temp[6])==2){
                     startNode.setRoads(temp[2]);
+                    endNode.setRoads(temp[2]);
                 }
                 else if (Integer.parseInt(temp[6])==3){
+                    startNode.setRoads(temp[2]);
                     endNode.setRoads(temp[2]);
                 }else {
                     startNode.setRoads(temp[2]);
@@ -90,6 +92,7 @@ public class RoadRead {
                 }
                 Path path1=new Path();
                 path1.setId(temp[2]);
+                path1.setFlow(new int[60]);
                 path1.setLength(Double.valueOf(temp[13]));
                 path1.setStart(temp[10]);
                 path1.setEnd(temp[11]);

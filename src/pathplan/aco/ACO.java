@@ -1,4 +1,4 @@
-package pathplan;
+package pathplan.aco;
 
 import bean.Node;
 import bean.Path;
@@ -17,7 +17,7 @@ public class ACO {
     private HashMap<Relation, Path> edges;
     private HashMap<String,Node> map;
     public double bestTime ;
-
+    private HashMap<String, Path> paths;
 
     private int antNum;
     private int maxGen;
@@ -30,6 +30,17 @@ public class ACO {
     private double pheMin;
 
 
+    public ACO(String start, String end,  HashMap<String, Path> paths, ArrayList<Node> nodes) {
+        this.start = start;
+        this.end = end;
+        this.paths =paths;
+        this.nodes=nodes;
+        map =new HashMap<>();
+        for (Node node:nodes){
+//            System.out.println(node.getNodeId());
+            map.put(node.getNodeId(),node);
+        }
+    }
     public ACO(String start, String end, ArrayList<Node> nodes, HashMap<Relation, Path> edges, HashMap<String,Node> map) {
         this.start = start;
         this.end = end;
@@ -37,7 +48,6 @@ public class ACO {
         this.edges=edges;
         this.map = map;
     }
-
     private void initializtion(){
         antNum=30;
         maxGen=200;
@@ -45,15 +55,15 @@ public class ACO {
         beta=2.0f;
         rho=0.5f;
         Q=400;
-        pheromone = new HashMap<>();
-        for(Node node:nodes){
-            ArrayList<String> relations = node.getRoads();
-            Relation relation = null;
-            for(String string : relations) {
-                relation = new Relation(node.getNodeId(), string);
-                pheromone.put(relation, 1.0);
-            }
-        }
+//        pheromone = new HashMap<>();
+//        for(Node node:nodes){
+//            ArrayList<String> relations = node.getRoads();
+//            Relation relation = null;
+//            for(String string : relations) {
+//                relation = new Relation(node.getNodeId(), string);
+//                pheromone.put(relation, 1.0);
+//            }
+//        }
         pheMax = 8.0;
         pheMin =0.5;
 
@@ -78,18 +88,21 @@ public class ACO {
             for(int j=0;j<antNum;j++){
                 alpha = Math.pow(beta,i-10);
                 if(alpha>8) alpha=8;
-                Ant ant = new Ant(nodes,edges,map,pheromone,alpha,beta,start,end);
-                ArrayList<String> tour = ant.search();
+//                Ant ant = new Ant(nodes,edges,map,pheromone,alpha,beta,start,end);
+                Ant ant = new Ant(start,end,beta,alpha,paths,map);
+                ArrayList<String> tour = ant.search2();
+                System.out.println(bestTour);
                 if(tour!=null){
                     antsTours.add(tour);
                     lengthOfTours[j]=ant.getTourLength();
                     if(lengthOfTours[j]<=bestLength){
                         bestLength =lengthOfTours[j];
                         bestTour = tour;
+                        System.out.println(bestTour);
                     }
-                }else{
+                }
+                else{
                     j--;
-                    continue;
                 }
             }
             /*
