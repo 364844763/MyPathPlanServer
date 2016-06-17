@@ -1,7 +1,7 @@
 import bean.Buliding;
 import com.alibaba.fastjson.JSON;
 import pathmatch.Buildmatch;
-import pathmatch.BulidReader;
+import MapReader.BulidReader;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

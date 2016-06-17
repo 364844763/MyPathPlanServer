@@ -1,4 +1,4 @@
-package pathplan.VirusAStar;
+package pathplan;
 
 import bean.Path;
 import bean.VirusNode;
@@ -41,6 +41,10 @@ public class VirusAStar {
 
     public List<Path> findPath(){
         List<Path> paths = new ArrayList<>();
+        ArrayList<VirusNode> openList = new ArrayList<>();
+        ArrayList<VirusNode> closeList = new ArrayList<>();
+        VirusNode currentPoint= startNode;
+        openList.add(currentPoint);
         return paths;
     }
 }

@@ -1,4 +1,4 @@
-package pathmatch;
+package MapReader;
 
 
 import bean.Location;
