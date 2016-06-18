@@ -42,6 +42,8 @@ public class FuZhouMap extends SearchDomain {
     public float cost(State sNode, State tNode) {
         Relation relation = new Relation(((NewNode)sNode).getId(),((NewNode)tNode).getId());
         NewRoad road = roads.get(relation);
+        if (road==null)
+            return Float.MAX_VALUE;
         return road.getLength();
     }
 

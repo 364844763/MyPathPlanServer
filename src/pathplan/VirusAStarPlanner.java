@@ -34,7 +34,7 @@ import java.util.PriorityQueue;
  * @author Abhijeet Anand (<a href="mailto:abhijeet.anand@rmit.edu.au">abhijeet
  *         [dot] anand [at] rmit [dot] edu [dot] au</a>)
  */
-public class AStarPlanner implements PathPlanner {
+public class VirusAStarPlanner implements PathPlanner {
     
     private PriorityQueue<SearchNode> m_openList             = null;
     private HashMap<State, SearchNode> m_closedListHashMap    = null;
@@ -77,7 +77,7 @@ public class AStarPlanner implements PathPlanner {
     /**
      * Creates an Weighted A-Star Path Planner based on a heuristic and a weight
      */
-    public AStarPlanner(DistanceHeuristics h, float Weight) {
+    public VirusAStarPlanner(DistanceHeuristics h, float Weight) {
         m_openList = new PriorityQueue<SearchNode>(11,
                 new Comparator<SearchNode>() {
                     
@@ -113,7 +113,7 @@ public class AStarPlanner implements PathPlanner {
     /**
      * Creates a classical A-Star Path Planner based on a heuristic
      */
-    public AStarPlanner(DistanceHeuristics h) {
+    public VirusAStarPlanner(DistanceHeuristics h) {
         this(h, 1F);
     }
     
@@ -124,44 +124,7 @@ public class AStarPlanner implements PathPlanner {
     public float getWeight() {
         return this.Weight;
     }
-    
-    /*
-     * =======================================================================*
-     * ---------------------------- STATIC METHODS ---------------------------*
-     * =======================================================================*
-     */
-    
-    /*
-     * =======================================================================*
-     * ---------------------------- PUBLIC METHODS ---------------------------*
-     * =======================================================================*
-     */
-    
-    /*
-     * =======================================================================*
-     * --------------------------- ACCESSOR METHODS --------------------------*
-     * =======================================================================*
-     */
-    
-    /*
-     * =======================================================================*
-     * --------------------------- MUTATOR METHODS ---------------------------*
-     * =======================================================================*
-     */
-    
-    /*
-     * =======================================================================*
-     * --------------------- OVERRIDDEN INTERFACE METHODS --------------------*
-     * =======================================================================*
-     */
-    /*
-     * (non-Javadoc)
-     * @see
-     * au.rmit.ract.planning.pathplanning.ai.PathPlanner#findPath(au.
-     * edu.rmit.cs.ract.planning.pathplanning.data.SearchDomain,
-     * au.rmit.ract.planning.pathplanning.entity.MyNode,
-     * au.rmit.ract.planning.pathplanning.entity.MyNode)
-     */
+
     @Override
     public Plan findPath(SearchDomain map, State sNode, State tNode) {
         // Date inTime = Calendar.getInstance().getTime();

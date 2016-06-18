@@ -1,24 +1,4 @@
-/**
- * RACT-PAL (RACT Path-Planning Algorithms Library) - A Library of Path Planning
- * Algorithms
- * 
- * Copyright (C) 2010 Abhijeet Anand, RACT - RMIT Agent Contest Team, School of
- * Computer Science and Information Technology,
- * RMIT University, Melbourne VIC 3000.
- * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
+
 package pathplan;
 
 import entity.*;
@@ -33,7 +13,7 @@ import java.util.*;
  *         rmit [dot] edu [dot] au</a>)
  * 
  */
-public class MovingSourceTargetDStarLitePlanner implements PathPlanner {
+public class MLPAStarPlanner implements PathPlanner {
     
     /**
      * This is the super list containing all the generated {@link SearchNode}s
@@ -118,28 +98,14 @@ public class MovingSourceTargetDStarLitePlanner implements PathPlanner {
     private static final float        DEF_G                  = BLOCKED;
     private static final float        DEF_RHS                = BLOCKED;
     
-    // private static final float DEF_H = 0;
-    
-    // private final Object lock = new Object();
-    
-    /*
-     * =======================================================================*
-     * ----------------------------- INNER CLASS -----------------------------*
-     * =======================================================================*
-     */
 
-    /*
-     * =======================================================================*
-     * ----------------------------- CONSTRUCTORS ----------------------------*
-     * =======================================================================*
-     */
     /**
      * Creates a Moving Target D-Star Path Planner based on a default heuristic,
      * Manhattan Distance heuristics, which assumes that the search domain is a
      * two-dimensional grid world, having made no assumptions about the
      * connectedness.
      */
-    public MovingSourceTargetDStarLitePlanner(DistanceHeuristics h) {
+    public MLPAStarPlanner(DistanceHeuristics h) {
         m_allSNodesList = new ArrayList<SearchNode>();
         m_openList = new PriorityQueue<SearchNode>(11,
                 new Comparator<SearchNode>() {
@@ -217,7 +183,7 @@ public class MovingSourceTargetDStarLitePlanner implements PathPlanner {
      */
     @Override
     public Plan findPath(SearchDomain map, State sNode, State tNode) {
-        // Date inTime = Calendar.getInstance().getTime();
+         Date inTime = Calendar.getInstance().getTime();
         // If the destination is not traversable, there can be no path. Same
         // applies to the start node.
         if (map.isBlocked(sNode) || map.isBlocked(tNode)) {
@@ -277,8 +243,8 @@ public class MovingSourceTargetDStarLitePlanner implements PathPlanner {
             
             // System.gc(); // Free up lost and unused memory
             
-            // Date outTime = Calendar.getInstance().getTime();
-            // System.out.println("Time Taken: MTDSTAR: " + (outTime.getTime() - inTime.getTime()));
+            Date outTime = Calendar.getInstance().getTime();
+            System.out.println("Time Taken: MTDSTAR: " + (outTime.getTime() - inTime.getTime()));
             // // SOP TimeTaken
             return path;
         }

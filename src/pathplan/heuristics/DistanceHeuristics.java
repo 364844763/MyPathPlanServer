@@ -28,92 +28,13 @@ import entity.State;
 /**
  * A distance based heuristics which is mostly applicable in geometric world.
  * 
- * @author Abhijeet Anand (<a href="mailto:abhijeet.anand@rmit.edu.au">abhijeet
- *         [dot] anand [at] rmit [dot] edu [dot] au</a>)
- * 
+ *
  */
 public interface DistanceHeuristics extends Heuristics {
-    
-    /*
-     * =======================================================================*
-     * ----------------------------- INNER CLASS -----------------------------*
-     * =======================================================================*
-     */
 
-    /*
-     * =======================================================================*
-     * ----------------------------- CONSTRUCTORS ----------------------------*
-     * =======================================================================*
-     */
-
-    /*
-     * =======================================================================*
-     * ---------------------------- STATIC METHODS ---------------------------*
-     * =======================================================================*
-     */
-
-    /*
-     * =======================================================================*
-     * ---------------------------- PUBLIC METHODS ---------------------------*
-     * =======================================================================*
-     */
-    /**
-     * The heuristic cost between two nodes in a map. A heuristics cost is an approximation of cost
-     * of traversing from the current node to the target node. This value is usually calculated
-     * between the current node and the goal node.
-     * 
-     * @param map
-     *            {@link SearchDomain} to be queried for distance values
-     * @param cNode
-     *            The current {@link State}
-     * @param gNode
-     *            The goal {@link State}
-     * @return A heuristic cost between the current and goal node.
-     */
     public float h(SearchDomain map, State cNode, State gNode);
-    
-    /**
-     * Updates the heuristic cost between two nodes in a map. A heuristics cost is an approximation
-     * of cost of traversing from the current node to the target node. This value is usually
-     * calculated/updated between the current node and the goal node. This method in particular is
-     * provided for the use of learning real time algorithms, such as LRTA*, LSS-LRTA* and others,
-     * which update the heuristic value as they learn more about the topology of the map.
-     * 
-     * @param map
-     *            {@link SearchDomain} to be queried for updating the distance value
-     * @param cNode
-     *            The current {@link State}
-     * @param gNode
-     *            The goal {@link State}
-     * @param hModifier
-     *            The value by which the original heuristics of the current node should be modified
-     * @return true if the map successfully updates the h-value; <br>
-     *         false otherwise.
-     */
+
     public boolean updateH(SearchDomain map, State cNode, State gNode, float hModifier);
     
-    /*
-     * =======================================================================*
-     * --------------------------- ACCESSOR METHODS --------------------------*
-     * =======================================================================*
-     */
-
-    /*
-     * =======================================================================*
-     * --------------------------- MUTATOR METHODS ---------------------------*
-     * =======================================================================*
-     */
-
-    /*
-     * =======================================================================*
-     * --------------------- OVERRIDDEN INTERFACE METHODS --------------------*
-     * =======================================================================*
-     */
-
-    /*
-     * =======================================================================*
-     * --------------------------- UTILITY METHODS ---------------------------*
-     * =======================================================================*
-     */
 
 }

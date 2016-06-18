@@ -127,24 +127,13 @@ public class ComputedPlan extends Plan {
         return waypoints.get(id);
     }
     
-    /*
-     * (non-Javadoc)
-     * @see
-     * au.rmit.ract.planning.pathplanning.entity.Path#getStepId(au.edu
-     * .rmit.cs.ract.planning.pathplanning.entity.Node)
-     */
+
     @Override
     public int getStepId(State waypoint) {
         return waypoints.indexOf(waypoint);
     }
     
-    /**
-     * Add a step at the beginning of the path.
-     * 
-     * @param wayPoint
-     * @return 0 if successful (which is also the index of the step); <br>
-     *         -1 otherwise.
-     */
+
     public int prependStep(State wayPoint) {
         if (!costSetOnce) {
             waypoints.add(0, wayPoint);
@@ -153,25 +142,14 @@ public class ComputedPlan extends Plan {
         return -1;
     }
     
-    /*
-     * (non-Javadoc)
-     * @see au.rmit.ract.planning.pathplanning.entity.Path#resetSteps()
-     */
+
     @Override
     public boolean resetSteps() {
         currentIndex = 0;
         return true;
     }
     
-    /**
-     * Set the total cost of this path. Once the cost has been set, it cannot be changed, which also
-     * locks the path from any further modification. Hence, the cost should be set after the path
-     * has been populated with waypoints.
-     * 
-     * @param cost
-     * @return true, if successful; <br>
-     *         false otherwise.
-     */
+
     public boolean setCost(float cost) {
         if (!costSetOnce) {
             totalCost = cost;
@@ -180,52 +158,7 @@ public class ComputedPlan extends Plan {
         }
         return !costSetOnce;
     }
-    
-    /*
-     * =======================================================================*
-     * ----------------------------- INNER CLASS -----------------------------*
-     * =======================================================================*
-     */
 
-    /*
-     * =======================================================================*
-     * ----------------------------- CONSTRUCTORS ----------------------------*
-     * =======================================================================*
-     */
-
-    /*
-     * =======================================================================*
-     * ---------------------------- STATIC METHODS ---------------------------*
-     * =======================================================================*
-     */
-
-    /*
-     * =======================================================================*
-     * ---------------------------- PUBLIC METHODS ---------------------------*
-     * =======================================================================*
-     */
-
-    /*
-     * =======================================================================*
-     * --------------------------- ACCESSOR METHODS --------------------------*
-     * =======================================================================*
-     */
-
-    /*
-     * =======================================================================*
-     * --------------------------- MUTATOR METHODS ---------------------------*
-     * =======================================================================*
-     */
-
-    /*
-     * =======================================================================*
-     * --------------------- OVERRIDDEN INTERFACE METHODS --------------------*
-     * =======================================================================*
-     */
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
         StringBuilder stringRep = new StringBuilder();
@@ -239,11 +172,6 @@ public class ComputedPlan extends Plan {
         
         return stringRep.toString();
     }
-    
-    /*
-     * =======================================================================*
-     * --------------------------- UTILITY METHODS ---------------------------*
-     * =======================================================================*
-     */
+
 
 }

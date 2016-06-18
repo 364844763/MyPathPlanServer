@@ -111,48 +111,13 @@ public class ALSSLRTAStarPlanner implements RTPathPlanner {
 
     }
     
-    /*
-     * =======================================================================*
-     * ---------------------------- STATIC METHODS ---------------------------*
-     * =======================================================================*
-     */
-    
-    /*
-     * =======================================================================*
-     * ---------------------------- PUBLIC METHODS ---------------------------*
-     * =======================================================================*
-     */
-    
-    /*
-     * =======================================================================*
-     * --------------------------- ACCESSOR METHODS --------------------------*
-     * =======================================================================*
-     */
-    
-    /*
-     * =======================================================================*
-     * --------------------------- MUTATOR METHODS ---------------------------*
-     * =======================================================================*
-     */
 
-    /*
-     * =======================================================================*
-     * --------------------- OVERRIDDEN INTERFACE METHODS --------------------*
-     * =======================================================================*
-     */
-    /*
-     * (non-Javadoc)
-     * @see au.rmit.ract.planning.pathplanning.ai.PathPlanner#expandedNodes()
-     */
     @Override
     public ArrayList<State> expandedNodes() {
         return new ArrayList<State>(m_expandedNodesList);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see au.rmit.ract.planning.pathplanning.ai.PathPlanner#unexpandedNodes()
-     */
+
     @Override
     public ArrayList<State> unexpandedNodes() {
         ArrayList<State> unexpanded = new ArrayList<State>();
@@ -208,13 +173,7 @@ public class ALSSLRTAStarPlanner implements RTPathPlanner {
         return path;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * au.rmit.ract.planning.pathplanning.ai.RTPathPlanner#findPath(au.rmit.ract.planning.pathplanning
-     * .entity.SearchDomain, au.rmit.ract.planning.pathplanning.entity.MyNode,
-     * au.rmit.ract.planning.pathplanning.entity.MyNode, int)
-     */
+
     @Override
     public synchronized Plan findPath(SearchDomain map, State sNode, State tNode, int lookahead) {
         m_lookahead = lookahead;
