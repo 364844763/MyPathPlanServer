@@ -1,17 +1,3 @@
-import MapReader.FuzhoumapReader;
-import bean.FuZhouMap;
-import bean.NewRoad;
-import bean.Relation;
-import entity.Plan;
-import entity.State;
-import pathplan.VirusAStarPlanner;
-import pathplan.LSSLRTAStarPlanner;
-import pathplan.MLPAStarPlanner;
-import pathplan.heuristics.ManhattanDistanceHeuristics;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
 /**
  * Created by jiajie on 15/11/16.
  */
@@ -54,19 +40,11 @@ public class Test {
 //        ArrayList<String> route1 = aco.constructor();
 //        for (String s :route1)
 //            System.out.println(s);
-        long time = System.currentTimeMillis();
-        FuzhoumapReader reader = new FuzhoumapReader("D:\\path.csv");
-        reader.read();
-        HashMap<String, ArrayList<State>> successors = reader.getSuccessors();
-        HashMap<String, ArrayList<State>> predecessors = reader.getPredecessors();
-        HashMap<Relation, NewRoad> roads = reader.getRoads();
-        time = System.currentTimeMillis();
-        HashMap<String,State> nodes = reader.getMap();
-        FuZhouMap map = new FuZhouMap(successors,predecessors,roads);
-        VirusAStarPlanner planner = new VirusAStarPlanner(ManhattanDistanceHeuristics.instance());
         String start="1584698";
         String end="1376388";
-        Plan plan = planner.findPath(map,nodes.get(start),nodes.get(end));
+//        PathPlannerFactory.create(1,start,end);
+        System.out.println( PathPlannerFactory.create(1,start,end));
+    /*    Plan plan = planner.findPath(map,nodes.get(start),nodes.get(end));
 
         System.out.println(plan);
         System.out.println(plan.getCost());
@@ -89,7 +67,7 @@ public class Test {
         planner1.resetSearch();
         plan1 = planner1.findPath(map,nodes.get(start),nodes.get(end));
         System.out.println(plan1);
-        System.out.println(System.currentTimeMillis()-time);
+        System.out.println(System.currentTimeMillis()-time);*/
 
     }
 }

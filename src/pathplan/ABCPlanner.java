@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * Created by jiajie on 2016/6/16.
  */
-public class ALSSLRTAStarPlanner implements RTPathPlanner {
+public class ABCPlanner implements RTPathPlanner {
 
     /**
      * This is the super list containing all the SearchNodes generated.
@@ -94,7 +94,7 @@ public class ALSSLRTAStarPlanner implements RTPathPlanner {
     private static final float FALSE = 0;
 
 
-    public ALSSLRTAStarPlanner(DistanceHeuristics h, int lookahead) {
+    public ABCPlanner(DistanceHeuristics h, int lookahead) {
         m_allSNodesListHashMap = new HashMap<State, SearchNode>(BUCKET_SIZE);
         m_openList = new PriorityQueue<SearchNode>(11, new Comparator<SearchNode>() {
 

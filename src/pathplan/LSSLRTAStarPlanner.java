@@ -53,7 +53,7 @@ public class LSSLRTAStarPlanner implements RTPathPlanner {
     private static final float DEF_H = 0;
 
     // private static final float DEF_RHS = BLOCKED;
-    
+
 
     public LSSLRTAStarPlanner(DistanceHeuristics h, int lookahead) {
         m_closedListHashMap = new HashMap<State, SearchNode>(BUCKET_SIZE);
@@ -71,7 +71,7 @@ public class LSSLRTAStarPlanner implements RTPathPlanner {
         m_heuristics = h;
 
     }
-    
+
 
     @Override
     public ArrayList<State> expandedNodes() {
@@ -157,7 +157,6 @@ public class LSSLRTAStarPlanner implements RTPathPlanner {
         }
         return annotations;
     }
-    
 
 
     private void aStar() {
