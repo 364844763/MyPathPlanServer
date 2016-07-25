@@ -40,6 +40,7 @@ public class BuildingFindServer extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/json; charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String name=request.getParameter("name");
         if (name!=null){
             Buildmatch buildmatch=new Buildmatch(bulidings);
