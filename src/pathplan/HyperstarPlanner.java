@@ -29,14 +29,11 @@ import pathplan.heuristics.*;
 import java.util.*;
 
 /**
- * This class provides an implementation of the Moving Target D* Lite path planning algorithm
- * designed by Koenig et. al. in 2010. This is an incremental search algorithm which find a shortest
- * path incrementally as the agent moves and the environment/world changes.
- * 
- * @author Abhijeet Anand (<a href="mailto:abhijeet.anand@rmit.edu.au">abhijeet
- *         [dot] anand [at] rmit [dot] edu [dot] au</a>)
+ * Bell M G H, Trozzi V, Hosseinloo S H, et al. Time-Dependent Hyperstar Algorithm for Robust Vehicle Navigation[J].
+ * Transportation Research Part A Policy & Practice, 2012, 46(5):790-800.
+ * Created by jiajie on 2016/6/16.
  */
-public class MovingTargetDStarLitePlanner implements PathPlanner {
+public class HyperstarPlanner implements PathPlanner {
     
     /**
      * This is the super list containing all the generated {@link SearchNode}s
@@ -144,7 +141,7 @@ public class MovingTargetDStarLitePlanner implements PathPlanner {
      * two-dimensional grid world, having made no assumptions about the
      * connectedness.
      */
-    public MovingTargetDStarLitePlanner(DistanceHeuristics h) {
+    public HyperstarPlanner(DistanceHeuristics h) {
         m_allSNodesListHashMap = new HashMap<State, SearchNode>(BUCKET_SIZE);
         m_openList = new PriorityQueue<SearchNode>(11,
                 new Comparator<SearchNode>() {

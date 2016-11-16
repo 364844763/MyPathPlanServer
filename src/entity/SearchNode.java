@@ -28,9 +28,7 @@ import java.util.Arrays;
  * set(·) methods of SearchNode. Though we have separated the data from logic, path planning
  * algorithms usually need to store some algorithm-specific information on each Node they expand.
  * This is accomplished by means of this class.
- * 
- * @author Abhijeet Anand (<a href="mailto:abhijeet.anand@rmit.edu.au">abhijeet
- *         [dot] anand [at] rmit [dot] edu [dot] au</a>)
+ *
  */
 public class SearchNode {
     

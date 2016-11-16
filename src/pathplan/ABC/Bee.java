@@ -1,4 +1,4 @@
-package pathplan.aco;
+package pathplan.ABC;
 
 import bean.Node;
 import bean.Path;
@@ -12,7 +12,7 @@ import java.util.HashSet;
  * Nahar S A A, Hashim F H. Modelling and Analysis of an Efficient Traffic Network Using Bee Colony Optimization Algorithm[C]
  * International Conference on Computational Intelligence. IEEE, 2011:32-36
  */
-public class Ant {
+public class Bee {
     private HashSet<String> tabu;
     private ArrayList<Node> nodes;
     private HashMap<Relation, Path> edges;
@@ -26,7 +26,7 @@ public class Ant {
     HashMap<Integer,Double> v = new HashMap<>();
     HashMap<Integer,Double> fl = new HashMap<>();
 
-    public Ant(String start, String end, double beta, double alpha,  HashMap<String, Path> paths,HashMap<String,Node> map) {
+    public Bee(String start, String end, double beta, double alpha, HashMap<String, Path> paths, HashMap<String, Node> map) {
         tabu = new HashSet<>();
         tourTime=0;
         tour = new ArrayList<>();
@@ -48,8 +48,8 @@ public class Ant {
         tour.add(start);
     }
 
-    public Ant(ArrayList<Node> nodes,HashMap<Relation, Path> edges,HashMap<String,Node> map,HashMap<Relation,Double> pheromone,
-               double alpha,double beta,String start,String end){
+    public Bee(ArrayList<Node> nodes, HashMap<Relation, Path> edges, HashMap<String, Node> map, HashMap<Relation, Double> pheromone,
+               double alpha, double beta, String start, String end){
         tabu = new HashSet<>();
         this.nodes=nodes;
         this.edges=edges;

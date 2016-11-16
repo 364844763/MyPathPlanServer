@@ -60,11 +60,11 @@ public class FuzhoumapReader {
                 }
                 if (predecessors.containsKey(id1)) {
                     nodes = predecessors.get(id1);
-                    nodes.add(node1);
+                    nodes.add(node2);
                     predecessors.replace(id1,nodes);
                 }else {
                     nodes = new ArrayList<>();
-                    nodes.add(node1);
+                    nodes.add(node2);
                     predecessors.put(id1,nodes);
                 }
                 if (successors.containsKey(id2)) {
@@ -78,11 +78,11 @@ public class FuzhoumapReader {
                 }
                 if (predecessors.containsKey(id2)) {
                     nodes = predecessors.get(id2);
-                    nodes.add(node2);
+                    nodes.add(node1);
                     predecessors.replace(id2,nodes);
                 }else {
                     nodes = new ArrayList<>();
-                    nodes.add(node2);
+                    nodes.add(node1);
                     predecessors.put(id2,nodes);
                 }
                 Relation relation = new Relation(id1,id2);

@@ -30,8 +30,8 @@ public class PathFindServer  extends HttpServlet {
         super.init();
         roadRead=new RoadRead();
         try {
-            map= Mapreader.reader("/Users/jiajie/Downloads/zhedian_output.csv");
-            roadRead.readNodes("/Users/jiajie/Downloads/path.csv");
+            map= Mapreader.reader("D:\\zhedian_output.csv");
+            roadRead.readNodes("D:\\path.csv");
             paths=roadRead.getPaths();
         } catch (IOException e) {
             e.printStackTrace();

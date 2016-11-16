@@ -127,9 +127,7 @@ public class VirusAStarPlanner implements PathPlanner {
 
     @Override
     public Plan findPath(SearchDomain map, State sNode, State tNode) {
-        // Date inTime = Calendar.getInstance().getTime();
-        // If the destination is not traversible, there can be no path. Same applies to the start
-        // node.
+
         if (map.isBlocked(sNode) || map.isBlocked(tNode)) {
             // Date outTime = Calendar.getInstance().getTime();
             // System.out.println("Time Taken: ASTAR: " + (outTime.getTime() - inTime.getTime()));
@@ -224,33 +222,19 @@ public class VirusAStarPlanner implements PathPlanner {
         // SOP TimeTaken
         return path;
     }
-    
-    /*
-     * (non-Javadoc)
-     * @see
-     * au.rmit.ract.planning.pathplanning.ai.PathPlanner#setHeuristics
-     * (au.rmit.ract.planning.pathplanning.ai.heuristics.Heuristics)
-     */
+
     @Override
     public boolean setHeuristics(Heuristics heuristics) {
         m_heuristics = DistanceHeuristics.class.cast(heuristics);
         return true;
     }
     
-    /*
-     * (non-Javadoc)
-     * @see
-     * au.rmit.ract.planning.pathplanning.ai.PathPlanner#expandedNodes()
-     */
+
     @Override
     public ArrayList<State> expandedNodes() {
         return new ArrayList<State>(m_expandedNodes);
     }
-    
-    /*
-     * (non-Javadoc)
-     * @see au.rmit.ract.planning.pathplanning.ai.PathPlanner#unexpandedNodes()
-     */
+
     @Override
     public ArrayList<State> unexpandedNodes() {
         ArrayList<State> unexpanded = new ArrayList<State>();
@@ -259,11 +243,7 @@ public class VirusAStarPlanner implements PathPlanner {
         }
         return unexpanded;
     }
-    
-    /*
-     * (non-Javadoc)
-     * @see au.rmit.ract.planning.pathplanning.ai.PathPlanner#annotations()
-     */
+
     @Override
     public HashMap<State, String> annotations() {
         HashMap<State, String> annotations = new HashMap<State, String>();
@@ -283,20 +263,7 @@ public class VirusAStarPlanner implements PathPlanner {
         }
         return annotations;
     }
-    
-    /*
-     * =======================================================================*
-     * --------------------------- UTILITY METHODS ---------------------------*
-     * =======================================================================*
-     */
-    /**
-     * Creates and initialises a new SearchNode for the MyNode provided as
-     * parameter. If the node already exists in the super list, returns it
-     * instead.
-     * 
-     * @param node
-     * @return A new SearchNode or the one in the super list if created earlier.
-     */
+
     private SearchNode newSearchNode(State node) {
         if (m_allSNodesListHashMap.containsKey(node)) {
             return m_allSNodesListHashMap.get(node);
@@ -310,9 +277,7 @@ public class VirusAStarPlanner implements PathPlanner {
         }
     }
     
-    /**
-     * This method initialises the system; basically clears all the lists.
-     */
+
     private void initialise() {
         // Clear the lists.
         m_closedListHashMap.clear();

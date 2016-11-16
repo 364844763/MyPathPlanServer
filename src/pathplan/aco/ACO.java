@@ -7,8 +7,9 @@ import bean.Relation;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Created by wang on 2016/4/15.
+/**	Jabbarpour M R, Noor R M, Anuar N B, et al. Bee Colony Optimisation for Vehicle Traffic Systems: Applications and Challenges[J].
+ * International Journal of Bio-Inspired Computation, 2014, 6(1):32-56.
+ * Created by jiajie on 2016/4/15.
  */
 public class ACO {
     private String start;
@@ -88,7 +89,7 @@ public class ACO {
             for(int j=0;j<antNum;j++){
                 alpha = Math.pow(beta,i-10);
                 if(alpha>8) alpha=8;
-//                Ant ant = new Ant(nodes,edges,map,pheromone,alpha,beta,start,end);
+//                Bee ant = new Bee(nodes,edges,map,pheromone,alpha,beta,start,end);
                 Ant ant = new Ant(start,end,beta,alpha,paths,map);
                 ArrayList<String> tour = ant.search2();
                 System.out.println(bestTour);

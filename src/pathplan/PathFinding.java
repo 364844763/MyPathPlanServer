@@ -117,12 +117,12 @@ public class PathFinding {
                     Path temp = roads.get(str);
                     temp.setNextDirection(determiner.determineDrection());
                     paths.add(temp);
-                    System.out.println(temp);
+//                    System.out.println(temp);
                 }else {
                     Path temp = roads.get(str);
                     temp.setNextDirection(-1);
                     paths.add(temp);
-                    System.out.println(temp);
+//                    System.out.println(temp);
                 }
             }
         }
@@ -147,12 +147,12 @@ public class PathFinding {
                         Path temp = roads.get(str);
                         temp.setNextDirection(determiner.determineDrection());
                         paths.add(temp);
-                        System.out.println(temp);
+//                        System.out.println(temp);
                     }else {
                         Path temp = roads.get(str);
                         temp.setNextDirection(-1);
                         paths.add(temp);
-                        System.out.println(temp);
+//                        System.out.println(temp);
                     }
 
                 }

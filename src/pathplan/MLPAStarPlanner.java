@@ -7,11 +7,8 @@ import pathplan.heuristics.*;
 import java.util.*;
 
 /**
- * This is a test class to test an extension of Moving Target D-Star Lite for moving sources.
- * 
- * @author Abhijeet Anand (<a href="mailto:abhijeet.anand@rmit.edu.au">abhijeet [dot] anand [at]
- *         rmit [dot] edu [dot] au</a>)
- * 
+ * Lu Y, Huo X, Arslan O, et al. Multi-Scale LPA* with low worst-case complexity guarantees[C]
+ * IEEE/RSJ International Conference on Intelligent Robots & Systems. 2011:3507-3512.
  */
 public class MLPAStarPlanner implements PathPlanner {
     

@@ -7,7 +7,7 @@ import pathplan.heuristics.Heuristics;
 
 import java.util.*;
 
-public class LSSLRTAStarPlanner implements RTPathPlanner {
+public class LPAStarPlanner implements RTPathPlanner {
 
     private HashMap<State, SearchNode> m_allSNodesListHashMap = null;
     private static final int BUCKET_SIZE = 10;
@@ -55,7 +55,7 @@ public class LSSLRTAStarPlanner implements RTPathPlanner {
     // private static final float DEF_RHS = BLOCKED;
 
 
-    public LSSLRTAStarPlanner(DistanceHeuristics h, int lookahead) {
+    public LPAStarPlanner(DistanceHeuristics h, int lookahead) {
         m_closedListHashMap = new HashMap<State, SearchNode>(BUCKET_SIZE);
         m_allSNodesListHashMap = new HashMap<State, SearchNode>(BUCKET_SIZE);
         m_openList = new PriorityQueue<SearchNode>(11, new Comparator<SearchNode>() {
